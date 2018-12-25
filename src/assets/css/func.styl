@@ -1,0 +1,97 @@
+// background:
+bg($img, $size = contain)
+  background: url($img + '@2x.png') no-repeat
+  background-size: $size
+  @media(-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3)
+    background: url($img + '@3x.png') no-repeat
+    background-size: $size
+// 1px
+@media(-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.333333)
+      transform: scaleY(0.333333)
+    &::before
+      -webkit-transform: scaleY(0.333333)
+      transform: scaleY(0.333333)
+@media(-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2)
+  .border-1px
+    &::after
+      transform: scaleY(0.5)
+    &::before
+      -webkit-transform: scaleY(0.5)
+      transform: scaleY(0.5)
+// border-top
+bt-1px($color)
+  position: relative;
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    border-top: 1px solid $color
+// border-bottom
+bb-1px($color)
+  position: relative;
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    border-bottom: 1px solid $color
+// border-top & bottom
+b_t_b-1px($color)
+  position: relative;
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    border-top: 1px solid $color
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    border-bottom: 1px solid $color
+
+// border-bottom
+bb-px($width = 1px, $color)
+  position: relative;
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    border-bottom: $width solid $color
+border-x($color, $t-px, $b-px)
+  position: relative;
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    border-top: $t-px solid $color
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    border-bottom: $b-px solid $color
+
+li
+  color: #e5004a
