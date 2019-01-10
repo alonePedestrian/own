@@ -1,6 +1,6 @@
 <template>
   <div id="numInput">
-    <input :value="formatter" @input="limitNum" class="numInt">
+    <input :value="formatter" @input="limitNum" @blur="blurs" @focus="onFoc" class="numInt">
     <div :class="showHint ? 'db' : 'dn'">
       <blockquote>
         <p>不会出现+</p>
@@ -74,11 +74,6 @@
       },
     },
     methods: {
-      assignment(newVal) {
-        this.$nextTick(() => {
-          this.$emit('input', newVal);
-        })
-      },
       // 数字输入框
       limitNum(e) {
         const {min, max, numType, numLen, precision} = this;
@@ -115,7 +110,13 @@
           e.target.value = this.oldValue;
           this.$emit('input', this.oldValue);
         }
-      }
+      },
+      blurs() {
+        this.$emit('blur', this.currentValue);
+      },
+      onFoc() {
+        this.$emit('focus', this.currentValue);
+      },
     }
   }
 </script>
